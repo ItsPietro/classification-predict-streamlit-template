@@ -24,7 +24,7 @@
 # Streamlit dependencies
 import streamlit as st
 import joblib,os
-from streamlit_option_menu import option_menu
+
 # Images
 from PIL import Image
 import pickle
