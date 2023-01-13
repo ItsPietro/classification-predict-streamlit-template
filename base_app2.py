@@ -78,20 +78,20 @@ def main():
 
 		if st.checkbox('Show visualizations'):
 			if option == 'Barplots of common words':
-				image = Image.open('resources/imgs/most_used.png')
+				image = Image.open('resources/imgs/most_used.PNG')
 				st.image(image)
 			else:
 				with st.expander('Pro'):
-					image = Image.open('resources/imgs/pro1.png')
+					image = Image.open('resources/imgs/pro1.PNG')
 					st.image(image)
 				with st.expander('News'):
-					image = Image.open('resources/imgs/news1.png')
+					image = Image.open('resources/imgs/news1.PNG')
 					st.image(image)
 				with st.expander('Neutral'):
-					image = Image.open('resources/imgs/neutral1.png')
+					image = Image.open('resources/imgs/neutral1.PNG')
 					st.image(image)
 				with st.expander('Anti'):
-					image = Image.open('resources/imgs/anti1.png')
+					image = Image.open('resources/imgs/anti1.PNG')
 					st.image(image)
 
 	# Building out the "Feature Engineering" page
@@ -103,11 +103,11 @@ def main():
 		# Display the unprocessed data
 		st.markdown("##### Balancing of data")
 		if st.checkbox('Show unbalanced data'): # data is hidden if box is unchecked
-			image = Image.open('resources/imgs/dist_sent.png')
+			image = Image.open('resources/imgs/dist_sent.PNG')
 			st.image(image)
 
 		if st.checkbox('Show balanced data'): # data is hidden if box is unchecked
-			image = Image.open('resources/imgs/balanced.png')
+			image = Image.open('resources/imgs/balanced.PNG')
 			st.image(image)
 
 	# Building out the predication page
@@ -115,15 +115,17 @@ def main():
 		st.info("Prediction with ML Models")
 		option = st.sidebar.selectbox(
             'Select the model from the Dropdown',
-            ('Logistic Regression', 'Decision Tree'))
+            ('Logistic Regression', 'Decision Tree', 'KNeighbours Classifier'))
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","Type Here")
 
 		# model selection options
 		if option == 'Logistic Regression':
 			model = "resources/Logistic_model.pkl"
-		else:
+		elif option == 'Decision Tree':
 			model = "resources/Decision_tree_model.pkl"
+		elif option == 'KNeighbours Classifier':
+			model = "resources/KNC_model.pkl"
 
 		if st.button("Classify"):
 			# Transforming user input with vectorizer
